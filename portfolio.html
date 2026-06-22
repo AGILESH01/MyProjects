@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agilesh Srirangaa V — Full Stack Web Developer</title>
+<meta name="description" content="Portfolio of Agilesh Srirangaa V — B.Tech CSE (GenAI) student at Jain University, building full-stack web development skills.">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F5F7FA;
+    --line:#BFD3E8;
+    --ink:#14213D;
+    --ink-soft:#5B6472;
+    --amber:#E8862B;
+    --teal:#2F7A6B;
+    --white:#FFFFFF;
+
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; scroll-padding-top:76px; }
+
+  body{
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(rgba(20,33,61,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,33,61,0.06) 1px, transparent 1px);
+    background-size:42px 42px;
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0;
+    background:var(--ink); color:var(--white); padding:.5rem 1rem; z-index:2000;
+  }
+  .skip-link:focus{ left:0.5rem; top:0.5rem; }
+
+  a{ color:var(--teal); text-decoration:none; }
+  a:hover{ color:var(--amber); }
+
+  :focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:2px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.75rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    margin-bottom:.6rem;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  h1,h2,h3{ font-family:var(--font-display); color:var(--ink); }
+
+  section{ padding:5rem 0; }
+  .section-tight{ padding:3.5rem 0; }
+
+  /* ---------- NAVBAR ---------- */
+  .navbar-blueprint{
+    background:rgba(245,247,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar-brand-mono{
+    font-family:var(--font-mono);
+    font-weight:600;
+    letter-spacing:.04em;
+    color:var(--ink) !important;
+  }
+  .navbar-brand-mono span{ color:var(--amber); }
+  .nav-link{
+    font-family:var(--font-mono);
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--ink-soft) !important;
+    padding:.4rem .9rem !important;
+  }
+  .nav-link.active, .nav-link:hover{ color:var(--ink) !important; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding-top:7rem; padding-bottom:4rem; }
+  .hero-name{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    font-weight:700;
+    line-height:1.05;
+    margin-bottom:.5rem;
+  }
+  .hero-role{
+    font-family:var(--font-mono);
+    color:var(--ink-soft);
+    font-size:.95rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-bottom:1rem;
+  }
+  .hero-tagline{
+    font-size:1.1rem;
+    color:var(--ink-soft);
+    max-width:34rem;
+    margin-bottom:2rem;
+  }
+
+  .btn-amber{
+    background:var(--amber);
+    border:1px solid var(--amber);
+    color:var(--white);
+    font-family:var(--font-mono);
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:.65rem 1.4rem;
+    border-radius:2px;
+  }
+  .btn-amber:hover{ background:#cf7320; border-color:#cf7320; color:var(--white); }
+
+  .btn-outline-ink{
+    background:transparent;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    font-family:var(--font-mono);
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:.65rem 1.4rem;
+    border-radius:2px;
+  }
+  .btn-outline-ink:hover{ background:var(--ink); color:var(--white); }
+
+  /* title block card */
+  .titleblock-wrap{ position:relative; }
+  .titleblock{
+    background:var(--white);
+    border:1px solid var(--ink);
+    position:relative;
+  }
+  .titleblock::before, .titleblock::after,
+  .titleblock-wrap .corner-tl, .titleblock-wrap .corner-br{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:2px solid var(--ink);
+  }
+  .titleblock-wrap .corner-tl{ top:-6px; left:-6px; border-right:none; border-bottom:none; }
+  .titleblock-wrap .corner-br{ bottom:-6px; right:-6px; border-left:none; border-top:none; }
+
+  .titleblock-head{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--white);
+    background:var(--ink);
+    padding:.55rem 1rem;
+  }
+  .titleblock dl{ margin:0; }
+  .titleblock .row-field{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.65rem 1rem;
+    border-bottom:1px dashed var(--line);
+    font-size:.92rem;
+  }
+  .titleblock .row-field:last-child{ border-bottom:none; }
+  .titleblock dt{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .titleblock dd{ margin:0; font-weight:500; text-align:right; }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .section-heading{ margin-bottom:1.2rem; }
+  .section-heading h2{ font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:.4rem; }
+  .section-sub{ color:var(--ink-soft); max-width:36rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about-text{ max-width:42rem; }
+
+  /* ---------- SKILLS ---------- */
+  .skill-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-top:3px solid var(--teal);
+    padding:1.2rem 1.1rem;
+    height:100%;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .skill-card:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(20,33,61,0.08); }
+  .skill-card .skill-icon{ font-size:1.5rem; color:var(--ink); margin-bottom:.6rem; }
+  .skill-card .skill-name{ font-family:var(--font-display); font-weight:600; margin-bottom:.3rem; }
+  .skill-card .skill-level{
+    font-family:var(--font-mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:.55rem;
+  }
+  .meter{ display:flex; gap:4px; }
+  .meter span{
+    height:6px; flex:1;
+    background:var(--line);
+    border-radius:1px;
+  }
+  .meter span.filled{ background:var(--teal); }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    background:var(--white);
+    border:1px solid var(--ink);
+    position:relative;
+  }
+  .edu-card::before, .edu-card::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:2px solid var(--ink);
+  }
+  .edu-card::before{ top:-6px; left:-6px; border-right:none; border-bottom:none; }
+  .edu-card::after{ bottom:-6px; right:-6px; border-left:none; border-top:none; }
+  .edu-head{
+    background:var(--ink);
+    color:var(--white);
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:.6rem 1.2rem;
+  }
+  .edu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+  }
+  .edu-field{
+    padding:1.1rem 1.2rem;
+    border-bottom:1px dashed var(--line);
+  }
+  @media (min-width:576px){
+    .edu-field{ border-right:1px dashed var(--line); border-bottom:none; }
+    .edu-field:last-child{ border-right:none; }
+  }
+  .edu-field dt{
+    font-family:var(--font-mono);
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:.3rem;
+  }
+  .edu-field dd{ margin:0; font-weight:600; font-size:1.02rem; }
+  .badge-status{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:.7rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--amber);
+    border:1px solid var(--amber);
+    padding:.15rem .5rem;
+    border-radius:2px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project-card{
+    background:var(--white);
+    border:1px solid var(--line);
+  }
+  .project-thumb{
+    width:100%;
+    aspect-ratio:16/10;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:var(--ink);
+  }
+  .project-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .project-head{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding:1.3rem 1.5rem .8rem;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .project-tag{
+    font-family:var(--font-mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    border:1px solid var(--teal);
+    color:var(--teal);
+    padding:.2rem .55rem;
+    border-radius:2px;
+    margin:.15rem .25rem .15rem 0;
+    display:inline-block;
+  }
+  .project-status{
+    font-family:var(--font-mono);
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    padding:.2rem .55rem;
+    white-space:nowrap;
+  }
+  .project-thumb-icon{
+    width:100%;
+    aspect-ratio:16/10;
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--teal);
+    font-size:3rem;
+  }
+  .project-body{ padding:0 1.5rem 1.5rem; }
+  .project-coming{
+    border:1px dashed var(--line);
+    background:transparent;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    color:var(--ink-soft);
+    font-family:var(--font-mono);
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:2rem 1rem;
+    height:100%;
+    min-height:160px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:1.4rem;
+    height:100%;
+  }
+  .contact-card i{ font-size:1.4rem; color:var(--amber); margin-bottom:.6rem; display:block; }
+  .contact-card .contact-label{
+    font-family:var(--font-mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:.3rem;
+  }
+  .contact-card .contact-value{ font-weight:600; word-break:break-word; }
+
+  .form-control{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:2px;
+    font-family:var(--font-body);
+  }
+  .form-control:focus{
+    border-color:var(--teal);
+    box-shadow:0 0 0 3px rgba(47,122,107,0.15);
+  }
+  .form-label{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.07em;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:1.8rem 0;
+    font-family:var(--font-mono);
+    font-size:.8rem;
+    color:var(--ink-soft);
+  }
+  footer a{ color:var(--ink-soft); }
+  footer a:hover{ color:var(--amber); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .fade-up{ animation:fadeUp .6s ease both; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-blueprint fixed-top" data-bs-spy="scroll" data-bs-target="#mainNav">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-mono" href="#home">AGILESH<span>/</span>DEV</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 fade-up">
+          <div class="hero-role">Full Stack Web Developer &mdash; Fresher</div>
+          <h1 class="hero-name">AGILESH<br>SRIRANGAA V</h1>
+          <p class="hero-tagline">2nd-year CSE (GenAI) student at Jain University, building full-stack skills one project at a time &mdash; currently exploring where code, data, and design meet.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#projects" class="btn-amber">View My Work</a>
+            <a href="#contact" class="btn-outline-ink">Get In Touch</a>
+          </div>
+        </div>
+        <div class="col-lg-5 fade-up">
+          <div class="titleblock-wrap">
+            <span class="corner-tl" aria-hidden="true"></span>
+            <span class="corner-br" aria-hidden="true"></span>
+            <div class="titleblock">
+              <div class="titleblock-head">Profile &mdash; Title Block</div>
+              <dl>
+                <div class="row-field"><dt>Name</dt><dd>Agilesh Srirangaa V</dd></div>
+                <div class="row-field"><dt>Role</dt><dd>Full Stack Web Dev</dd></div>
+                <div class="row-field"><dt>Program</dt><dd>B.Tech CSE &mdash; GenAI</dd></div>
+                <div class="row-field"><dt>Institution</dt><dd>Jain University</dd></div>
+                <div class="row-field"><dt>CGPA</dt><dd>9.4 / 10</dd></div>
+                <div class="row-field"><dt>Status</dt><dd>Pursuing &mdash; Year 2</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">About</div>
+        <h2>A bit about me</h2>
+      </div>
+      <p class="about-text">
+        I'm a second-year Computer Science (GenAI) student pursuing my B.Tech in association with IBM at Jain Deemed-to-be University, currently holding a 9.4 CGPA. I'm building my skills in full-stack web development, from front-end fundamentals to back-end logic, and learning by applying them to real projects &mdash; like a machine-learning-based placement analyser. I enjoy figuring out how code, data, and design come together, and I'm looking for internship and project opportunities where I can keep learning and contribute as a developer.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="bg-white-subtle">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Toolkit</div>
+        <h2>Languages &amp; Tools</h2>
+        <p class="section-sub">Currently building proficiency across these &mdash; beginner to intermediate, growing with every project.</p>
+      </div>
+      <div class="row g-3">
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-filetype-py skill-icon"></i>
+            <div class="skill-name">Python</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-filetype-java skill-icon"></i>
+            <div class="skill-name">Java</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-cpu skill-icon"></i>
+            <div class="skill-name">C</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-cpu-fill skill-icon"></i>
+            <div class="skill-name">C++</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-filetype-html skill-icon"></i>
+            <div class="skill-name">HTML</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-filetype-css skill-icon"></i>
+            <div class="skill-name">CSS</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="skill-card">
+            <i class="bi bi-filetype-js skill-icon"></i>
+            <div class="skill-name">JavaScript</div>
+            <div class="skill-level">Beginner &rarr; Intermediate</div>
+            <div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Academic Record</div>
+        <h2>Education</h2>
+      </div>
+      <div class="edu-card">
+        <div class="edu-head">Sheet 01 &mdash; Current Program</div>
+        <dl class="edu-grid mb-0">
+          <div class="edu-field">
+            <dt>Qualification</dt>
+            <dd>B.Tech CSE &mdash; GenAI</dd>
+          </div>
+          <div class="edu-field">
+            <dt>Institution</dt>
+            <dd>Jain (Deemed-to-be) University</dd>
+          </div>
+          <div class="edu-field">
+            <dt>In Association With</dt>
+            <dd>IBM</dd>
+          </div>
+          <div class="edu-field">
+            <dt>CGPA</dt>
+            <dd>9.4 / 10</dd>
+          </div>
+          <div class="edu-field">
+            <dt>Status</dt>
+            <dd><span class="badge-status">Pursuing &mdash; Year 2</span></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Featured Build</div>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="project-card h-100">
+            <div class="project-thumb">
+              <img src="./3E91456A-EA1F-4189-924C-D5BEE44A031A.png" alt="Placement Analyzer dashboard showing placement percentage, average salary, year-wise trends, and department comparison charts" loading="lazy">
+            </div>
+            <div class="project-head">
+              <div>
+                <h3 class="h5 mb-1">Placement Analyser</h3>
+                <div>
+                  <span class="project-tag">Python</span>
+                  <span class="project-tag">Machine Learning</span>
+                  <span class="project-tag">Data Analysis</span>
+                </div>
+              </div>
+              <span class="project-status">Academic Project</span>
+            </div>
+            <div class="project-body">
+              <p class="text-secondary mb-3">
+                A machine-learning-powered dashboard that analyses student placement data &mdash; tracking placement %, average salary, year-wise trends, and department-wise comparisons to help estimate placement readiness.
+              </p>
+              <a href="https://github.com/AGILESH01/MyProjects/blob/main/placement_analyzer_full_app.html" target="_blank" rel="noopener" class="btn-outline-ink d-inline-flex align-items-center gap-2">
+                <i class="bi bi-github"></i> View Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="project-card h-100">
+            <div class="project-thumb-icon" aria-hidden="true">
+              <i class="bi bi-window-stack"></i>
+            </div>
+            <div class="project-head">
+              <div>
+                <h3 class="h5 mb-1">Personal Portfolio Website</h3>
+                <div>
+                  <span class="project-tag">HTML5</span>
+                  <span class="project-tag">CSS3</span>
+                  <span class="project-tag">Bootstrap</span>
+                </div>
+              </div>
+              <span class="project-status">Personal Project</span>
+            </div>
+            <div class="project-body">
+              <p class="text-secondary mb-0">
+                The site you're looking at right now &mdash; a fully responsive portfolio built from scratch with semantic HTML, custom CSS, and Bootstrap for layout and components.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="project-coming">
+            <div>
+              <i class="bi bi-three-dots fs-3 d-block mb-2"></i>
+              New build in progress &mdash; check back soon
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Get In Touch</div>
+        <h2>Let's Connect</h2>
+        <p class="section-sub">Open to internships, freelance work, and full-stack opportunities. Reach out &mdash; I reply fast.</p>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <a href="mailto:agileshsrirangaa08@gmail.com" class="text-decoration-none">
+            <div class="contact-card">
+              <i class="bi bi-envelope"></i>
+              <div class="contact-label">Email</div>
+              <div class="contact-value text-dark">agileshsrirangaa08@gmail.com</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="tel:+919842406591" class="text-decoration-none">
+            <div class="contact-card">
+              <i class="bi bi-telephone"></i>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value text-dark">+91 98424 06591</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="https://www.linkedin.com/in/agilesh-srirangaa-v-b36b30368" target="_blank" rel="noopener" class="text-decoration-none">
+            <div class="contact-card">
+              <i class="bi bi-linkedin"></i>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value text-dark">View Profile</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card p-4 p-md-5">
+        <form action="mailto:agileshsrirangaa08@gmail.com" method="get" enctype="text/plain">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-12">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+              <button type="submit" class="btn-amber">Send Message</button>
+              <span class="text-secondary small">Opens your email app to send this directly to me.</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div>&copy; 2026 Agilesh Srirangaa V. All rights reserved.</div>
+    <div class="d-flex gap-3">
+      <a href="mailto:agileshsrirangaa08@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+      <a href="tel:+919842406591" aria-label="Phone"><i class="bi bi-telephone"></i></a>
+      <a href="https://www.linkedin.com/in/agilesh-srirangaa-v-b36b30368" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <div>Designed &amp; built by Agilesh Srirangaa V</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
